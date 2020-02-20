@@ -24,4 +24,6 @@ $(document).on("click","#divisao",function(){
 });
 $(document).on("click","#limpar",function(){
   $("#resultado").val("");
+  $("#valor1").val("");
+  $("#valor2").val("");
 });
