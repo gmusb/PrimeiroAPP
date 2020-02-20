@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script scr="jquery-3.4.1.min.js"></script>
+  <script scr="components/contar.js"></script>
   <script scr="bootstrap.js"></script>
 
   <link rel="stylesheet" href="components/loader.css">
@@ -14,28 +15,52 @@
   
 </head>
 <body>
- <div class="container">
-   <div class="row">
-     <div class="col-sm">
-       <div class="form-group">
-         <label for="number1">Valor 1</label>
-         <input type="number" class="form-control" id="number1">
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-sm">
-       <div class="form-group">
-         <label for="number2">Valor 2</label>
-         <input type="number" class="form-control" id="number2">
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-sm">
-       <input type="submit" value="Somar" class="btn btn-primary">
-     </div>
-   </div>
- </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="valor1">Valor 1</label>
+					<input type="number" name="valor1" class="form-control" id="valor1">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="valor2">Valor 2</label>
+					<input type="number" name="valor2" class="form-control" id="valor2">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+					<button class="btn btn-primary btn-block" id="adicao" name="adicao">+</button>
+			</div>
+			<div class="col-3">
+					<button class="btn btn-primary btn-block" id="subitracao" name="subitracao">-</button>
+			</div>
+			<div class="col-3">
+					<button class="btn btn-primary btn-block" id="multiplicacao" name="multiplicacao">*</button>
+			</div>
+			<div class="col-3">
+					<button class="btn btn-primary btn-block" id="divisao" name="divisao">/</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="resultado">Resultado</label>
+					<input type="number" name="resultado" class="form-control" id="resultado" readonly>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<button class="btn btn-primary btn-block" id="limpar" name="limpar">Limpar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
