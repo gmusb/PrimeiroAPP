@@ -27,3 +27,10 @@ $(document).on("click","#limpar",function(){
   $("#valor1").val("");
   $("#valor2").val("");
 });
+
+$("#divisao").click(function(){
+  var v1 = $("#valor1").val();
+  var v2 = $("#valor2").val();
+  var result = parseFloat(v1)/parseFloat(v2);
+  $("#resultado").val(result);
+});

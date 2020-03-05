@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
-  <script scr="jquery-3.4.1.min.js"></script>
+  <script scr="lib/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script scr="components/contar.js"></script>
   <script scr="bootstrap.js"></script>
 
@@ -16,41 +17,50 @@
 </head>
 <body>
 	<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h1>Regra de 3</h1>
+      </div>
+    </div>
 		<div class="row">
-			<div class="col-sm">
+			<div class="col-6">
 				<div class="form-group">
 					<label for="valor1">Valor 1</label>
 					<input type="number" name="valor1" class="form-control" id="valor1">
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm">
+			<div class="col-6">
 				<div class="form-group">
 					<label for="valor2">Valor 2</label>
 					<input type="number" name="valor2" class="form-control" id="valor2">
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-3">
-					<button class="btn btn-primary btn-block" id="adicao" name="adicao">+</button>
+
+    <div class="row">
+			<div class="col-6">
+				<div class="form-group">
+					<label for="valor3">Valor 3</label>
+					<input type="number" name="valor3" class="form-control" id="valor3">
+				</div>
 			</div>
-			<div class="col-3">
-					<button class="btn btn-primary btn-block" id="subitracao" name="subitracao">-</button>
-			</div>
-			<div class="col-3">
-					<button class="btn btn-primary btn-block" id="multiplicacao" name="multiplicacao">*</button>
-			</div>
-			<div class="col-3">
-					<button class="btn btn-primary btn-block" id="divisao" name="divisao">/</button>
+			<div class="col-6">
+				<div class="form-group">
+					<label for="valor4">Valor 4</label>
+					<input type="number" name="valor4" class="form-control" id="valor4">
+				</div>
 			</div>
 		</div>
+    <div class="row">
+      <div class="col-sm">
+        <button class="btn btn-primary btn-block" id="calc" name="calc">Calcular</button>
+      </div>
+    </div>
 		<div class="row">
 			<div class="col-sm">
 				<div class="form-group">
 					<label for="resultado">Resultado</label>
-					<input type="number" name="resultado" class="form-control" id="resultado" readonly>
+					<input type="text" name="resultado" class="form-control" id="resultado" readonly>
 				</div>
 			</div>
 		</div>
@@ -63,4 +73,34 @@
 		</div>
 	</div>
 </body>
+<script>
+$(document).on("click","#limpar",function(){
+  $("#resultado").val("");
+  $("#valor1").val("");
+  $("#valor2").val("");
+  $("#valor3").val("");
+  $("#valor4").val("");
+});
+$(document).on("click","#calc",function(){
+  if( $("#valor1").val().length == 0){
+    let resposta = $('#valor3').val()*($('#valor2').val() / $('#valor4').val());
+    $('#resultado').val(resposta);
+  }
+  else if( $("#valor2").val().length == 0){
+    let resposta = $('#valor4').val()*($('#valor1').val() / $('#valor3').val());
+    $('#resultado').val(resposta);
+  }
+  else if( $("#valor3").val().length == 0){
+    let resposta = ($("#valor1").val() * $("#valor4").val())/$("#valor2").val();
+    $('#resultado').val(resposta);
+  }
+  else if( $("#valor4").val().length == 0){
+    let resposta = ($("#valor3").val() * $("#valor2").val())/$("#valor1").val();
+    $('#resultado').val(resposta);
+  }
+  else{
+    $('#resultado').val("Pelo menos um campo deve estar vazio");
+  }
+});
+</script>
 </html>
